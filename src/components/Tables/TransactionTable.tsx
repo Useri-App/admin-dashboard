@@ -12,7 +12,7 @@ const TransactionTable = ({
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="px-4 py-6 md:px-6 xl:px-7.5">
         <h4 className="text-xl font-semibold text-black dark:text-white">
-          Produce
+          Transactions
         </h4>
       </div>
 
@@ -83,12 +83,6 @@ const TransactionTable = ({
                 className="mr-2 rounded-full border border-gray-300 px-6 py-1 "
               >
                 View
-              </a>
-              <a
-                href={""}
-                className="rounded-full bg-meta-5 px-6 py-1 text-white"
-              >
-                Edit
               </a>
             </div>
           </div>

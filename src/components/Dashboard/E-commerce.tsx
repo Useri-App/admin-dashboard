@@ -1,9 +1,10 @@
-"use client";
 import dynamic from "next/dynamic";
 import React from "react";
 import TableOne from "../Tables/TableOne";
 import CardDataStats from "../CardDataStats";
 import UserTable from "../Tables/UserTable";
+import { UserData } from "@/types/user";
+import { OrderType } from "@/types/order";
 
 const MapOne = dynamic(() => import("@/components/Maps/MapOne"), {
   ssr: false,
@@ -93,18 +94,12 @@ const orders = [
     },
   },
 ];
-// {
-//   date: "25 Jan 2024",
-//   desc: "200 tubers of yam by Emeka Nwokolo",
-//
-//   slug: "#",
-// },
 
-const ECommerce: React.FC = () => {
+const Dashboard: React.FC<{users: UserData[], orders: OrderType[], totalUsers: number, totalFarms: number}> = ({users, orders, totalUsers, totalFarms} ) => {
   const stats = {
-    totalSales: "154,000",
-    users: "7",
-    farms: "9",
+    totalSales: "0,00",
+    users: totalUsers,
+    farms: totalFarms,
   };
   return (
     <>
@@ -173,7 +168,7 @@ const ECommerce: React.FC = () => {
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
         <div className="col-span-12 xl:col-span-6">
-          <UserTable />
+          <UserTable users={users} />
         </div>
 
         <div className="col-span-12 rounded-lg border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-6 xl:pb-1">
@@ -216,17 +211,16 @@ const ECommerce: React.FC = () => {
               </a>
             </div>
           ))}
-          <a
-            href="#"
-            className="my-4 border-t border-stroke pt-4 text-end hover:text-primary md:block"
-          >
-            {" "}
-            See All Orders{" "}
-          </a>
+
+          <div className="my-6 border-t border-stroke pt-4 flex items-center justify-end gap-4">  
+            <a href="/orders" className="text-md border-gray-600 rounded-md border px-4">
+              View All Orders
+            </a>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default ECommerce;
+export default Dashboard;

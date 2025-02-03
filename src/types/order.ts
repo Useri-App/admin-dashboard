@@ -36,3 +36,17 @@ export type OrderType = {
     };
   };
 };
+
+export type BidType = {
+  id: string;
+  price: number;
+  eta: number;
+  eta_metric: string;
+  status: string;
+  note: string;
+  vehicle_id: string;
+  order_id: string;
+  transporter_id: string;
+  selected?: string;
+  order: object
+}

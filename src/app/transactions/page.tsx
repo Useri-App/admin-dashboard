@@ -1,11 +1,7 @@
-"use client";
-
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { Metadata } from "next";
-import React, { useEffect, useState } from "react";
-
-import { serverAction } from "./create-produce";
+import React from "react";
 import { ProduceType } from "@/types/produce";
 import ProduceTable from "@/components/Tables/ProduceTable";
 import { CreateButton } from "../ui/buttons/page";
@@ -32,34 +28,12 @@ const transactions: TransactionType[] = [
   },
 ];
 
-// export const metadata: Metadata = {
-//   title: "Farms - Useri Dashboard",
-//   description: "",
-// };
+export const metadata: Metadata = {
+  title: "Transactions - Useri Dashboard",
+  description: "",
+};
 
 function Transaction() {
-  const [produce, setProduce] = useState<TransactionType[]>([]);
-
-  useEffect(() => {
-    Login({
-      password: "Password@1",
-      role: "farmer",
-      email: "keme.kenneth@gmail.com",
-    }).then((token) => {
-      const url = "https://api.useriapp.com:5000/api/produce";
-      fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data: any) => {
-          setProduce(data.data.produce);
-        });
-    });
-  }, []);
 
   return (
     <DefaultLayout>

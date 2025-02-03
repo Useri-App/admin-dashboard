@@ -11,22 +11,7 @@ const ProduceTable = ({ produce }: { produce: ProduceType[] }) => {
         </h4>
       </div>
 
-      {/* name: string;
-      description: string;
-      location: string;
-
-      harvest_time: number;
-      harvest_time_metric: string;
-
-      quantity: number;
-      quantity_metric: string;
-
-      amount: number;
-      farm: {
-        name: string;
-      }; */}
-
-      <div className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-9 md:px-6 2xl:px-7.5">
+      <div className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-10 md:px-6 2xl:px-7.5">
         <div className="col-span-1 flex items-center">
           <p className="font-medium">Name</p>
         </div>
@@ -53,7 +38,7 @@ const ProduceTable = ({ produce }: { produce: ProduceType[] }) => {
       {produce.length > 0 &&
         produce.map((produce, key) => (
           <div
-            className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-9 md:px-6 2xl:px-7.5"
+            className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-10 md:px-6 2xl:px-7.5"
             key={key}
           >
             <div className="col-span-1 flex items-center">
@@ -84,6 +69,12 @@ const ProduceTable = ({ produce }: { produce: ProduceType[] }) => {
                 {produce.quantity > 1 && "s"}
               </p>
             </div>
+
+            <div className="col-span-1 items-center sm:flex">
+              <p className="text-sm text-black dark:text-white">
+                {produce.amount}
+              </p>
+            </div>
             <div className="col-span-1 items-center sm:flex">
               <p className="text-sm text-black dark:text-white">
                 {produce.harvest_time} {produce.harvest_time_metric}
@@ -91,18 +82,12 @@ const ProduceTable = ({ produce }: { produce: ProduceType[] }) => {
               </p>
             </div>
 
-            <div className="col-span-1 flex items-center">
+            <div className="col-span-1 flex justify-end items-center">
               <a
                 href={"/user"}
-                className="border-gray-300 mr-2 rounded-full border px-6 py-1 "
+                className="border-gray-600 mr-2 rounded-full border px-6"
               >
                 View
-              </a>
-              <a
-                href={""}
-                className="rounded-full bg-meta-5 px-6 py-1 text-white"
-              >
-                Edit
               </a>
             </div>
           </div>

@@ -1,79 +1,27 @@
-"use client";
-
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { Metadata } from "next";
-import React, { useEffect, useState } from "react";
-
-import { serverAction } from "./place-orders";
-import { OrderType } from "@/types/order";
+import React from "react";
 import OrdersTable from "@/components/Tables/OrdersTable";
-import { CreateButton } from "../ui/buttons/page";
-import Login from "@/util/login";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import {fetcher} from "@/util/requester";
 
-// export const metadata: Metadata = {
-//   title: "Farms - Useri Dashboard",
-//   description: "",
-// };
+export const metadata: Metadata = {
+  title: "Orders - Useri Dashboard",
+  description: "",
+};
 
-function Orders() {
-  const [orders, setOrders] = useState<OrderType[]>([]);
+async function Orders() {
 
-  const [openModal, setModal] = useState(false);
-  const handleModal = () => {
-    setModal(!openModal);
-  };
+  const openModal = false
 
-  const orders2 = [
-    {
-      produce_id: "673isK3is3is...",
-      quantity: 10,
-      need_logistics: false,
-      id: "QOY673isKifF4onMmqBo...",
-      status: "pending",
-      quantity_metric: "ton",
-      amount: 4000,
-      buyer_id: "1NiIs1NiIsY673isK...",
-      created_at: "2023-02-07T04:51:10.738Z",
-      buyer: {
-        name: "James Yakubu",
-        location: "Lagos",
-      },
-      produce: {
-        name: "James Yakubu",
-        photos: ["https://res.cloudinary.com/dq2z..."],
-        location: "Abuja",
-        farm: {
-          name: "Kinige",
-        },
-        farmer: {
-          name: "John Yakubu",
-        },
-      },
-    },
-  ];
 
-  useEffect(() => {
-    Login({
-      password: "Password@1",
-      role: "buyer",
-      email: "zeelz.co@gmail.com",
-    }).then((token) => {
-      const url = "https://api.useriapp.com:5000/api/order";
-      fetch(url, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-        .then((res) => res.json())
-        .then((data: any) => {
-          console.log(data.data.orders);
-          setOrders(data.data.orders);
-        });
-    });
-  }, []);
+  const token = cookies().get("token")?.value
+  
+  if(!token) redirect("/login")
+  
+  const {meta, orders} = (await fetcher("order", token)).data
 
   return (
     <>
@@ -81,9 +29,7 @@ function Orders() {
         <Breadcrumb pageName="Orders" />
         <OrdersTable orders={orders} />
 
-        {/* <CreateButton action={serverAction} name={"Create orders"} /> */}
-
-        {/* <CreateButton action={handleModal} name={"Open Modal"} /> */}
+        {/* not a really a modal though. needs to blur bg */}
         {openModal && (
           <div
             style={{ zIndex: "999999" }}
