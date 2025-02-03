@@ -54,7 +54,7 @@ const userData: UserData[] = [
   },
 ];
 
-const UserTable = () => {
+const UserTable = ({users}: {users: UserData[]}) => {
   return (
     <div className="rounded-lg border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1">
       <h4 className="mb-6 text-xl font-semibold text-black dark:text-white">
@@ -81,7 +81,7 @@ const UserTable = () => {
           </div>
         </div>
 
-        {userData.map((user, key) => (
+        {users.map((user, key) => (
           <div
             className={`flex ${
               key === userData.length - 1
@@ -105,13 +105,18 @@ const UserTable = () => {
           </div>
         ))}
 
-        <a
-          href="#"
-          className="my-4 border-t border-stroke pt-4 text-end hover:text-primary md:block"
-        >
-          {" "}
-          See All Users{" "}
-        </a>
+          <div className="my-6 border-t border-stroke pt-4 flex items-center justify-end gap-4">              
+            <a href="/farmers" className="text-md border-gray-600 rounded-md border px-4">
+              View Farmers
+            </a>
+            <a href="/buyers" className="text-md border-gray-600 rounded-md border px-4">
+              View Buyers
+            </a>
+
+            <a href="/transporters" className="text-md border-gray-600 rounded-md border px-4">
+              View Transporters
+            </a>
+          </div>
       </div>
     </div>
   );

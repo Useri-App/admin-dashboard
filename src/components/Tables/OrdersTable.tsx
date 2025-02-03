@@ -4,23 +4,8 @@ import { OrderType } from "@/types/order";
 import React from "react";
 import { Edit, View } from "../Icons";
 
-// quantity: 10,
-// need_logistics: false,
-// id: "QOY673isKifF4onMmqBo...",
-// status: "pending",
-// quantity_metric: "ton",
-// amount: 4000,
-// buyer: {
-//   name: "James Yakubu",
-// },
-// produce: {
-//   name: "James Yakubu",
-//   farm: {
-//     name: "Kinige",
-//   }
-// },
-
 const OrdersTable = ({ orders }: { orders: OrderType[] }) => {
+  
   return (
     <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
       <div className="px-4 py-6 md:px-6 xl:px-7.5">
@@ -31,30 +16,30 @@ const OrdersTable = ({ orders }: { orders: OrderType[] }) => {
 
       <div className="grid grid-cols-6 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-11 md:px-6 2xl:px-7.5">
         <div className="col-span-1 flex items-center">
-          <p className="font-medium">Order ID</p>
+          <p className="font-semibold">Order ID</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="font-medium">Buyer</p>
+          <p className="font-semibold">Buyer</p>
         </div>
 
         <div className="col-span-2 flex items-center">
-          <p className="font-medium">Produce</p>
+          <p className="font-semibold">Produce</p>
         </div>
 
         <div className="col-span-2 flex items-center">
-          <p className="font-medium">Farm</p>
+          <p className="font-semibold">Farm</p>
         </div>
         <div className="col-span-1 flex items-center">
-          <p className="font-medium">Quantity</p>
+          <p className="font-semibold">Quantity</p>
         </div>
         <div className="col-span-1 flex items-center justify-end">
-          <p className="font-medium">Amount (₦)</p>
+          <p className="font-semibold">Amount (₦)</p>
         </div>
         <div className="col-span-1 flex items-center justify-center">
-          <p className="font-medium">Logistics</p>
+          <p className="font-semibold">Logistics</p>
         </div>
         <div className="col-span-1 flex items-center justify-center">
-          <p className="font-medium">Status</p>
+          <p className="font-semibold">Status</p>
         </div>
 
         {/* <div className="col-span-2 flex items-center">
@@ -112,12 +97,20 @@ const OrdersTable = ({ orders }: { orders: OrderType[] }) => {
               </p>
             </div>
             <div className="col-span-1 flex items-center justify-end gap-4">
-              <a href={"/user"} className="rounded-md border p-1">
+              
+              <a href={`/orders/${order.id}`} className="border-gray-600 mr-2 rounded-full border px-6 py-1">
+                  View
+                </a>
+
+              {/* view icon */}
+              {/* <a href={"/user"} className="rounded-md border p-1">
                 <View />
-              </a>
-              <a href={"/user"} className="rounded-md border border-meta-5 p-1">
+              </a> */}
+
+              {/* to add Edit: col-span-1, justify-center */}
+              {/* <a href={"/user"} className="rounded-md border border-meta-5 p-1">
                 <Edit />
-              </a>
+              </a> */}
             </div>
           </div>
         ))}

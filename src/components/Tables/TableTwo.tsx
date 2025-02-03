@@ -26,6 +26,10 @@ const TableTwo = ({ data }: { data: UserData[] }) => {
         <div className="col-span-2 flex items-center">
           <p className="font-medium">User Type</p>
         </div>
+
+        <div className="col-span-2 flex items-center">
+          <p className="font-medium">Status</p>
+        </div>
       </div>
 
       {data &&
@@ -49,24 +53,27 @@ const TableTwo = ({ data }: { data: UserData[] }) => {
             </div>
             <div className="col-span-2 flex items-center">
               <p
-                className={`rounded-full border px-2 text-sm capitalize text-${enumColors[user.role]}`}
+                className={`rounded-full border border-${enumColors[user.role]} px-2 text-sm capitalize text-${enumColors[user.role]}`}
               >
                 {user.role}
               </p>
             </div>
-            <div className="col-span-2 flex items-center">
+            <div className="col-span-1 flex items-center">
+              <p className="text-sm text-black dark:text-white">{user.verified? "Verified" : ""}</p>
+            </div>
+            <div className="col-span-1 flex justify-end items-center">
               <a
                 href={`/users/${user.id}`}
-                className="mr-2 rounded-full border border-gray-300 px-6 py-1 "
+                className="mr-2 rounded-full border border-gray-600 px-6 "
               >
                 View
               </a>
-              <a
+              {/* <a
                 href={""}
                 className="rounded-full bg-meta-5 px-6 py-1 text-white"
               >
                 Edit
-              </a>
+              </a> */}
             </div>
           </div>
         ))}

@@ -22,6 +22,7 @@ const FarmTable = ({ farms }: { farms: FarmType[] }) => {
         <div className="col-span-2 flex items-center">
           <p className="font-medium">User Type</p>
         </div>
+        
       </div>
 
       {farms.length > 0 &&
@@ -49,19 +50,19 @@ const FarmTable = ({ farms }: { farms: FarmType[] }) => {
                 {farm.type}
               </p>
             </div>
-            <div className="col-span-2 flex items-center">
+            <div className="col-span-2 flex justify-end items-center">
               <a
                 href={"/user"}
-                className="border-gray-300 mr-2 rounded-full border px-6 py-1 "
+                className="border-gray-600 mr-2 rounded-full border px-6 "
               >
                 View
               </a>
-              <a
+              {/* <a
                 href={""}
                 className="rounded-full bg-meta-5 px-6 py-1 text-white"
               >
                 Edit
-              </a>
+              </a> */}
             </div>
           </div>
         ))}
