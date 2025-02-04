@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import React from "react";
-import TableOne from "../Tables/TableOne";
 import CardDataStats from "../CardDataStats";
 import UserTable from "../Tables/UserTable";
 import { UserData } from "@/types/user";
@@ -14,90 +13,9 @@ const ChartThree = dynamic(() => import("@/components/Charts/ChartThree"), {
   ssr: false,
 });
 
-const orders = [
-  {
-    id: "eBeL2k-Uvmq8zuE",
-    status: "pending",
-    quantity: 5,
-    quantity_metric: "bag",
-    amount: 60000,
-    need_logistics: true,
-    produce_id: "ugHEallR66KgK_VvI6tKWRv3hnJplc",
-    created_at: "2024-10-17T04:42:00.384Z",
-    buyer_id: "2Mxj9WGUng_nAAdkEIpWByp4YM-iB1",
-    buyer: {
-      name: "Faith Uweni",
-    },
-    produce: {
-      name: "Rice",
-      photos: [
-        "https://res.cloudinary.com/dq2zvvxx8/image/upload/v1689248693/FTxY02_rn_image_picker_lib_temp_b1761cd6-9fc6-4e79-8efa-6bd9b3e2d61d_e7095e.jpg",
-      ],
-      farmer: {
-        name: "Keme Kenneth",
-      },
-      farm: {
-        name: "Oluwakemi Poultry",
-      },
-    },
-  },
-  {
-    id: "cjzwbHTt2il7E5_",
-    status: "pending",
-    quantity: 5,
-    quantity_metric: "ton",
-    amount: 12500,
-    need_logistics: true,
-    produce_id: "ZoJiZiGNJvOhGXJdPXi4EKE9e2kB0n",
-    created_at: "2024-10-17T04:04:05.692Z",
-    buyer_id: "2Mxj9WGUng_nAAdkEIpWByp4YM-iB1",
-    buyer: {
-      name: "Faith Uweni",
-    },
-    produce: {
-      name: "Plantain",
-      photos: [
-        "https://res.cloudinary.com/dq2zvvxx8/image/upload/v1729094988/useri-tomatoes_aui0qb.jpg",
-      ],
-      farmer: {
-        name: "Keme Kenneth",
-      },
-      farm: {
-        name: "Ebube Agro Farms",
-      },
-    },
-  },
-  {
-    id: "um1q9n2U1hzehWT",
-    status: "pending",
-    quantity: 5,
-    quantity_metric: "ton",
-    amount: 22500,
-    need_logistics: false,
-    produce_id: "BmgMDJab30uhiGIHM1pgmUMfUcIqr0",
-    created_at: "2024-10-17T03:49:16.276Z",
-    buyer_id: "2Mxj9WGUng_nAAdkEIpWByp4YM-iB1",
-    buyer: {
-      name: "Faith Uweni",
-    },
-    produce: {
-      name: "Tomatoes",
-      photos: [
-        "https://res.cloudinary.com/dq2zvvxx8/image/upload/v1729094988/useri-tomatoes_aui0qb.jpg",
-      ],
-      farmer: {
-        name: "Keme Kenneth",
-      },
-      farm: {
-        name: "Chidinma Poultry Farms",
-      },
-    },
-  },
-];
-
 const Dashboard: React.FC<{users: UserData[], orders: OrderType[], totalUsers: number, totalFarms: number}> = ({users, orders, totalUsers, totalFarms} ) => {
   const stats = {
-    totalSales: "0,00",
+    totalSales: '0.00',
     users: totalUsers,
     farms: totalFarms,
   };
@@ -123,7 +41,7 @@ const Dashboard: React.FC<{users: UserData[], orders: OrderType[], totalUsers: n
             />
           </svg>
         </CardDataStats>
-        <CardDataStats title="Users" total={stats.users} rate="2.59%" levelUp>
+        <CardDataStats title="Users" total={String(stats.users)} rate="2.59%" levelUp>
           <svg
             className="stroke-primary dark:stroke-white"
             xmlns="http://www.w3.org/2000/svg"
@@ -143,7 +61,7 @@ const Dashboard: React.FC<{users: UserData[], orders: OrderType[], totalUsers: n
         </CardDataStats>
         <CardDataStats
           title="Registered Farms"
-          total={stats.farms}
+          total={String(stats.farms)}
           rate="2.95%"
           levelDown
         >

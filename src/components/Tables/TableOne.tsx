@@ -1,32 +1,9 @@
 import { UserData } from "@/types/user";
 import { enumColors } from "@/types/eums";
+import { UserRole } from "@/types/user-roles";
+import { userTypeColors } from "@/util/user-type-colors";
 
-const userData: UserData[] = [
-  {
-    name: "Adebayo Adeyemi",
-    userType: "farmer",
-  },
-  {
-    name: "Chinedu Okafor",
-    userType: "buyer",
-  },
-  {
-    name: "Funke Akinyele",
-    userType: "farmer",
-  },
-  {
-    name: "Ngozi Nwosu",
-    userType: "transporter",
-  },
-  {
-    name: "Kelechi Udeh",
-    userType: "buyer",
-  },
-  {
-    name: "Olufemi Balogun",
-    userType: "farmer",
-  },
-];
+const userData: UserData[] = [];
 
 const TableOne = () => {
   return (
@@ -65,15 +42,15 @@ const TableOne = () => {
             key={key}
           >
             <div className="w-1/2 p-2.5 xl:p-5">
-              <p className="text-black dark:text-white">{user.name}</p>
+              <p className="text-black dark:text-white">{user?.name}</p>
             </div>
 
             <div className="w-1/2 p-2.5 xl:p-5">
               {/* <p className="text-black dark:text-white">{user.userType}</p> */}
               <p
-                className={`inline-block rounded-sm text-base bg-${enumColors[user.userType]} __bg-meta-8 px-3 py-1 capitalize text-white`}
+                className={`inline-block rounded-sm text-base bg-${enumColors[user?.role as UserRole]} __bg-meta-8 px-3 py-1 capitalize text-white`}
               >
-                {user.userType}
+                {user?.role}
               </p>
             </div>
           </div>

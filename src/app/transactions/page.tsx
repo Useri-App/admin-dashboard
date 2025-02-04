@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import React from "react";
 import { ProduceType } from "@/types/produce";
 import ProduceTable from "@/components/Tables/ProduceTable";
-import { CreateButton } from "../ui/buttons/page";
 import Login from "@/util/login";
 import { TransactionType } from "@/types/transaction";
 import TransactionTable from "@/components/Tables/TransactionTable";
@@ -39,8 +38,6 @@ function Transaction() {
     <DefaultLayout>
       <Breadcrumb pageName="Produce" />
       <TransactionTable transactions={transactions} />
-
-      {/* <CreateButton action={serverAction} name={"Create produce"} /> */}
     </DefaultLayout>
   );
 }
