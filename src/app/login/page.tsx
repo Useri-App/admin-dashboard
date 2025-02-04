@@ -1,8 +1,4 @@
-
-
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import Breadcrumb from "@/components/Breadcrumbs/Breadcrumb";
 import { Metadata } from "next";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
@@ -10,54 +6,17 @@ import Header from "@/components/Header";
 import {adminLogin} from "@/util/login";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-// import { useRouter } from "next/navigation";
+import { submitAction } from "../action/login";
 
 export const metadata: Metadata = {
-  title: "Next.js SignIn Page | TailAdmin - Next.js Dashboard Template",
-  description: "This is Next.js Signin Page TailAdmin Dashboard Template",
+  title: "Login - Useri Dashboard",
+  description: "",
 };
-
-export const submitAction = async (formData: FormData) => {
-  "use server"
-  const username = formData.get("username")
-  const password = formData.get("password")
-  const url = "https://reqres.in/api/todos"  
-  
-  const ress = await fetch("https://api.useriapp.com:5000/api/admin/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ username, password }),
-  });
-
-  const token = (await ress.json()).data.accessToken;
-  const cookie = {
-      name: "session",
-      duration: 5 * 60 * 1000,
-      options: {httpOnly: true, secure: true, path: "/"}
-    } //, sameSite: "lax"
-    const expires  = new Date(Date.now() + cookie.duration)
-
-    cookies().set("token", token, {...cookie.options, expires})
-    const cookieToken = cookies().get("token")?.value
-    // console.log(cookieToken)
-
-    redirect("/")
-  
-}
 
 const SignIn: React.FC = () => {
 
-    // const [sidebarOpen, setSidebarOpen] = useState(false);
-  // DefaultLayout
   return (
     <>
-      {/* <Breadcrumb pageName="Sign In" /> */}
-
-
-      {/* <Header /> */}
-
       <div className="h-screen flex flex-wrap justify-center items-center">
 
         <div className="w-full xl:w-1/3 bg-white rounded-sm dark:bg-boxdark shadow-default border border-stroke dark:border-strokedark">

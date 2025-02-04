@@ -24,10 +24,6 @@ async function Bids() {
       <DefaultLayout>
         <Breadcrumb pageName="Bids" />
         <BidsTable bids={bids} />
-
-        {/* <CreateButton action={serverAction} name={"Create orders"} /> */}
-        {/* <CreateButton action={handleModal} name={"Open Modal"} /> */}
-
       </DefaultLayout>
     </>
   );

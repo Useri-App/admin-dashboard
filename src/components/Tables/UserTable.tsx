@@ -1,5 +1,6 @@
 import { UserData } from "@/types/user";
 import { enumColors } from "@/types/eums";
+import { UserRole } from "@/types/user-roles";
 
 const userData: UserData[] = [
   {
@@ -97,7 +98,7 @@ const UserTable = ({users}: {users: UserData[]}) => {
             <div className="w-1/2 p-2.5 xl:p-5">
               {/* <p className="text-black dark:text-white">{user.userType}</p> */}
               <p
-                className={`inline-block rounded-md text-base bg-${enumColors[user.role]} __bg-meta-8 px-3 py-1 capitalize text-white`}
+                className={`inline-block rounded-md text-base bg-${enumColors[user.role as UserRole]} __bg-meta-8 px-3 py-1 capitalize text-white`}
               >
                 {user.role}
               </p>

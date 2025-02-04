@@ -477,17 +477,3 @@ const Buttons = () => {
 };
 
 export default Buttons;
-
-const CreateButton = ({ action = null, name }: any) => {
-  return (
-    <Link
-      onClick={() => action()}
-      href="#"
-      className="mt-4 inline-flex items-center justify-center rounded-md bg-meta-3 px-10 py-4 text-center font-medium text-white hover:bg-opacity-90 lg:px-8 xl:px-10"
-    >
-      {name}
-    </Link>
-  );
-};
-
-export { CreateButton };

@@ -76,6 +76,7 @@ const FormLayout = () => {
                 <SelectGroupOne
                   label="Selector"
                   selectValues={["option 1", "option 2", "option 3"]}
+                  disabled={true}
                 />
 
                 <div className="mb-6">

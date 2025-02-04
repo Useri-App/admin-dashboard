@@ -4,7 +4,6 @@ import { Metadata } from "next";
 import React from "react";
 import { ProduceType } from "@/types/produce";
 import ProduceTable from "@/components/Tables/ProduceTable";
-import { CreateButton } from "../ui/buttons/page";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { fetcher } from "@/util/requester";
@@ -25,8 +24,6 @@ async function Produce() {
     <DefaultLayout>
       <Breadcrumb pageName="Produce" />
       <ProduceTable produce={produce} />
-
-      {/* <CreateButton action={serverAction} name={"Create produce"} /> */}
     </DefaultLayout>
   );
 }

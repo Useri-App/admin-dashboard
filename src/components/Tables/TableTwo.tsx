@@ -3,6 +3,7 @@ import { enumColors } from "@/types/eums";
 
 import { UserData } from "@/types/user";
 import React from "react";
+import { UserRole } from "@/types/user-roles";
 
 const TableTwo = ({ data }: { data: UserData[] }) => {
   return (
@@ -53,7 +54,7 @@ const TableTwo = ({ data }: { data: UserData[] }) => {
             </div>
             <div className="col-span-2 flex items-center">
               <p
-                className={`rounded-full border border-${enumColors[user.role]} px-2 text-sm capitalize text-${enumColors[user.role]}`}
+                className={`rounded-full border border-${enumColors[user.role as UserRole]} px-2 text-sm capitalize text-${enumColors[user.role as UserRole]}`}
               >
                 {user.role}
               </p>
